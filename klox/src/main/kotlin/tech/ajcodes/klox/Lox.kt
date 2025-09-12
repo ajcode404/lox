@@ -2,9 +2,7 @@ package tech.ajcodes.klox
 
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.nio.charset.Charset
-import java.nio.file.Files
-import java.nio.file.Paths
+import java.io.File
 import kotlin.system.exitProcess
 
 var hadError = false
@@ -24,8 +22,8 @@ fun main(args: Array<String>) {
 }
 
 fun runFile(path: String) {
-    val bytes = Files.readAllBytes(Paths.get(path))
-    run(String(bytes, Charset.defaultCharset()))
+    val source = File(path).readBytes().toString(Charsets.UTF_8)
+    run(source)
     if (hadError) exitProcess(65)
     if (hadRuntimeError) exitProcess(70)
 }

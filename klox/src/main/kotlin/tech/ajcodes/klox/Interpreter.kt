@@ -1,7 +1,5 @@
 package tech.ajcodes.klox
 
-import kotlin.math.exp
-
 class RuntimeError(val token: Token, message: String) : RuntimeException(message)
 
 class Interpreter : Visitor<Any> {
